@@ -12,7 +12,7 @@ npx create-typink@latest
 
 ### Command Syntax
 
-```
+```sh
 npx create-typink<@version> [options]
 ```
 

@@ -1,8 +1,8 @@
 # TypinkProvider
 
-`TypinkProvider`: A global provider for Typink DApps, it managed shared state internally so hooks and child components can access (accounts, signer, wallet connection, Dedot clients, contract deployments ...)
+`TypinkProvider` is the global provider for Typink DApps, it managed shared state internally so hooks and child components can access (accounts, signer, wallet connection, Dedot clients, contract deployments ...)
 
-Wrap your application component with `TypinkProvider`.
+First thing to do is to wrap your application component with `TypinkProvider`.
 
 ```tsx
 import { popTestnet, development } from 'typink'
@@ -44,4 +44,17 @@ const { connectedAccount, signer } = ... // from subconnect or talisman-connect 
   <MyAppComponent ... />
 </TypinkProvider>
 ```
+
+### Props
+
+| **deployments**       | `ContractDeployment[]` | An array of contract deployments                                                                                                         |
+| --------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **defaultCaller**     | `string`               | The default Substrate address used as the default caller for making queries when no wallet is connected.                                 |
+| **defaultNetworkId**  | `string`               | The default network to be used. Choose from supported networks, such as `popTestnet`, `astar`, etc.                                      |
+| **cacheMetadata**     | `boolean`              | Toggle whether or not to cache network metadata.                                                                                         |
+| **supportedNetworks** | NetworkInfo`[]`        | An array of [supported networks](https://docs.dedot.dev/typink/getting-started/supported-networks) for your dApp.                        |
+| **signer**            | `Signer`               | The signer for handling transactions. If using an external wallet connector (e.g., SubConnect, Talisman Connect), pass your signer here. |
+| **connectedAccount**  | InjectedAccount        | The currently connected account. If using an external wallet connector, pass the active account here.                                    |
+| **wallets**           | Wallet \[ ]            | Provided supported wallets                                                                                                               |
+| **appName**           | `string`               | The name of your dApp, used to identify your dApp when connecting to wallets                                                             |
 

@@ -1,6 +1,6 @@
 # useTypink
 
-Access various shared states via `useTypink`
+&#x20;`useTypink` to access various shared states from `TypinkProvider`, you will probably use this a lot when accessing current connected account or network information ...
 
 ```tsx
 // ...
@@ -18,3 +18,4 @@ const {
 } = useTypink();
 // ...
 ```
+

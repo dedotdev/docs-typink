@@ -7,6 +7,10 @@
 
 These hooks make contract deployment smooth and hassle-free! 🚀
 
+{% hint style="info" %}
+Don’t forget to use the built-in [txToaster](https://docs.dedot.dev/typink/utilities/txtoaster) to display notifications about the transaction’s progress, so users stay informed in real-time! 🚀
+{% endhint %}
+
 ```tsx
 // ...
 
@@ -48,6 +52,26 @@ const deployContraact = async () => {
   }
 }
 
+// ...
+```
+
+### UI Feedback During Transaction Processing
+
+Just like `useContractTx` for sending transactions, `useDeployerTx` also provides helpful boolean states to update your UI during the deployment process. This makes it easy to show loading states, disable buttons, or display progress updates while the transaction is in progress!&#x20;
+
+```tsx
+// ...
+const newGreeterTx = useDeployerTx(deployer, 'new');
+
+// ... loading until the transaction is in best blocks
+<Button type='submit' size='sm' mt={4} isLoading={newGreeterTx.inBestBlockProgress}>
+  Sign & Send
+</Button>
+
+// OR ... loading until the transaction is finalized
+<Button type='submit' size='sm' mt={4} isLoading={newGreeterTx.inProgress}>
+  Sign & Send
+</Button>
 // ...
 ```
 

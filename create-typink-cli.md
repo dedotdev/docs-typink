@@ -18,17 +18,17 @@ npx create-typink<@version> [options]
 
 ### Options
 
-| Option                        | Alias            | Description                                                                                                 |
-| ----------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------- |
-| `--name <project-name>`       | `-n`             | Specify the project name.                                                                                   |
-| `--template <template-name>`  | `-t`             | Choose a template (default: `base`).                                                                        |
-| `--preset <preset-contract>`  | `-p`             | Choose an example preset contract (`base`, `psp22`, `greeter`, `none`).                                     |
-| `--wallet <wallet-connector>` | `-w`             | Choose a wallet connector (`Default`, `Subconnect`, `Talisman Connect`).                                    |
-| `--network <network-name>`    | `-N`             | Choose a network (`Pop Testnet`, `Aleph Zero Testnet`, `Aleph Zero Mainnet`, `Astar`, `Shiden`, `Shibuya`). |
-| `--skip`                      | `--skip-install` | Skip package installation.                                                                                  |
-| `--no-git`                    |                  | Skip git initialization.                                                                                    |
-| `--version`                   | `-v`             | Show Typink version.                                                                                        |
-| `--help`                      | `-h`             | Show help.                                                                                                  |
+| Option                         | Alias            | Description                                                                                                 |
+| ------------------------------ | ---------------- | ----------------------------------------------------------------------------------------------------------- |
+| `--name <project-name>`        | `-n`             | Specify the project name.                                                                                   |
+| `--template <template-name>`   | `-t`             | Choose a template (default: `base`).                                                                        |
+| `--example <example-contract>` | `-e`             | Choose an example contract (`psp22`, `greeter`).                                                            |
+| `--wallet <wallet-connector>`  | `-w`             | Choose a wallet connector (`Default`, `Subconnect`, `Talisman Connect`).                                    |
+| `--network <network-name>`     | `-N`             | Choose a network (`Pop Testnet`, `Aleph Zero Testnet`, `Aleph Zero Mainnet`, `Astar`, `Shiden`, `Shibuya`). |
+| `--skip`                       | `--skip-install` | Skip package installation.                                                                                  |
+| `--no-git`                     |                  | Skip git initialization.                                                                                    |
+| `--version`                    | `-v`             | Show Typink version.                                                                                        |
+| `--help`                       | `-h`             | Show help.                                                                                                  |
 
 ### Notes
 

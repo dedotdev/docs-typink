@@ -1,19 +1,15 @@
 # usePSP22Balance
 
-{% hint style="info" %}
-WIP  🚧
-{% endhint %}
+The `usePSP22Balance` hook retrieves an account’s balance on a PSP22 contract. The hook also comes with a watch mode to continuously monitor balance changes, updating the value in real time.
 
 ### Usage
 
 ```tsx
-import { usePSP22Balance, useContract, useTypink } from 'typink';
-import { ContractId } from 'contracts/deployments';
-import { GreeterContractApi } from 'contracts/types/greeter';
+import { usePSP22Balance, useTypink } from 'typink';
 
 // ...
 const { connectedAccount } = useTypink();
-const { contract } = useContract<GreeterContractApi>(ContractId.GREETER);
+const psp22ContractAddress = '...'
 
 const {
     data: myPsp22Balance,
@@ -21,7 +17,7 @@ const {
     refresh,
     // ...
   } = usePSP22Balance({
-    contractAddress: contract?.address?.address(),
+    contractAddress: psp22ContractAddress,
     address: connectedAccount?.address,
     watch: true
   });

@@ -1,8 +1,6 @@
 # useBalance & useBalances
 
-{% hint style="info" %}
-WIP  🚧
-{% endhint %}
+Fetching the native Substrate-based token balance. This hook is useful for verifying whether a user’s account has sufficient funds to cover transaction fees.
 
 ### Usage
 

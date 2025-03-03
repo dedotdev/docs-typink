@@ -1,31 +1,32 @@
+---
+description: Showing transaction notifications with real-time progress updates
+---
+
 # txToaster
 
-{% hint style="info" %}
-WIP 🚧
-{% endhint %}
+
 
 ### Quick look
 
-`TODO` gif image here
+<figure><img src="../.gitbook/assets/txToaster.gif" alt=""><figcaption></figcaption></figure>
 
 ### Usage
 
-```tsx
-// ...
+<pre class="language-tsx"><code class="lang-tsx">// ...
 
 import { useContract, useContractTx } from 'typink';
 import { ContractId } from 'contracts/deployments.ts';
 import { GreeterContractApi } from 'contracts/types/greeter';
-import { txToaster } from '@/utils/txToaster.tsx';
+<a data-footnote-ref href="#user-content-fn-1">import { txToaster } from '@/utils/txToaster.tsx';</a>
 
 const [message, setMessage] = useState('');
-const { contract } = useContract<GreeterContractApi>(ContractId.GREETER);
+const { contract } = useContract&#x3C;GreeterContractApi>(ContractId.GREETER);
 const setMessageTx = useContractTx(contract, 'setMessage');
 
 const doSetMessage = async () => {
   if (!contract || !message) return;
 
-  const toaster = txToaster();
+  <a data-footnote-ref href="#user-content-fn-2">const toaster = txToaster();</a>
   
   try {
     await setMessageTx.signAndSend({
@@ -39,18 +40,27 @@ const doSetMessage = async () => {
         }
 
         // showing a toast notifying transaction status
-        toaster.onTxProgress(progress);
+        <a data-footnote-ref href="#user-content-fn-3">toaster.onTxProgress(progress);</a>
       },
     });
   } catch (e: any) {
     console.error('Fail to make transaction:', e);
     // showing a toast message
-    toaster.onTxError(e);
+    <a data-footnote-ref href="#user-content-fn-4">toaster.onTxError(e);</a>
   }
 }
 
 // ...
-```
+</code></pre>
 
 
 
+
+
+[^1]: Import `txToaster`
+
+[^2]: Create a toaster instance
+
+[^3]: Updates transaction progress
+
+[^4]: Showing transaction errors

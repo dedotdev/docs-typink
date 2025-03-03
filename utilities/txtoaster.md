@@ -4,13 +4,33 @@ description: Showing transaction notifications with real-time progress updates
 
 # txToaster
 
-
+The `Typink` generated project includes a built-in txToaster utility, making it easy to display transaction notifications with real-time progress updates and error details in case of failures. This helps keep users informed about the status of their transactions.
 
 ### Quick look
 
 <figure><img src="../.gitbook/assets/txToaster.gif" alt=""><figcaption></figcaption></figure>
 
 ### Usage
+
+Basic usage
+
+```tsx
+import { txToaster, TxToaster } from '@/utils/txToaster.tsx';
+
+// Initialize a new toaster instance
+const toaster: TxToaster = txToaster();
+
+try {
+    // Sending transactions
+    // Update transaction progress        
+    toaster.onTxProgress(...);
+} catch (e) {
+    // Showing transaction errors
+    toaster.onTxError(e);
+}    
+```
+
+Let's put this on a real use-case to handle the `setMessage`transaction from the `greeter`contract:
 
 <pre class="language-tsx"><code class="lang-tsx">// ...
 
@@ -52,6 +72,21 @@ const doSetMessage = async () => {
 
 // ...
 </code></pre>
+
+### TxToaster Interface
+
+```tsx
+import { ISubmittableResult } from 'dedot/types';
+
+type TxToaster = {
+  // Updates the toast based on transaction progress
+  onTxProgress: (progress: ISubmittableResult) => void;
+  // Updates the toast when a transaction error occurs
+  onTxError: (e: Error) => void;
+};
+```
+
+
 
 
 

@@ -24,6 +24,7 @@
 * [Utilities](utilities/README.md)
   * [formatBalance](utilities/formatbalance.md)
   * [txToaster](utilities/txtoaster.md)
+  * [dedot/utils](https://docs.dedot.dev/utilities)
 
 ## HELP & FAQ
 

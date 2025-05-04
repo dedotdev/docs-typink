@@ -1,14 +1,13 @@
 ---
-description: >-
-  Typesafe React hooks for seamless ink! smart contract interactions, powered by
-  Dedot!
-cover: .gitbook/assets/typink-bg 2.png
+cover: .gitbook/assets/Typink banner (1991-491).png
 coverY: 0
 ---
 
 # Welcome to Typink
 
-Typink is a fully type-safe React hooks library designed to simplify ink! smart contract interactions. Built on top of Dedot, it ensures robust, and efficient contract integrations for decentralized applications (dApps) in the Polkadot ecosystem.
+The ultimate toolkit for [ink!](https://use.ink) dApps development, powered by [Dedot](https://dedot.dev)!
+
+Typink offers fully type-safe React hooks library designed to simplify ink! smart contract interactions. Built on top of Dedot, it ensures robust, and efficient contract integrations for decentralized applications (dApps) in the Polkadot ecosystem.
 
 ## Why Typink?
 

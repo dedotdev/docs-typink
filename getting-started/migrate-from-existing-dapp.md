@@ -1,7 +1,5 @@
 # Migrate from existing dapp
 
-## Integrate Typink into Your DApp
-
 This guide will walk you through integrating Typink into your dapp. Typink is designed to be flexible, making it easy to integrate whether you're building a new project or migrating an existing one—especially if your dapp already relies on external wallet connectors like SubConnect or Talisman Connect.
 
 ### Installation

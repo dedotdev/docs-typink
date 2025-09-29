@@ -5,16 +5,16 @@ coverY: 0
 
 # Welcome to Typink
 
-The ultimate toolkit for dapps development on Polkadot, powered by [Dedot](https://dedot.dev)!
+**Build production-ready dapps on Polkadot with confidence.**
 
-Typink offers fully type-safe React hooks library designed to simplify [ink!](https://use.ink) and Solidity smart contract interactions using both WASM (pallet-contracts) and PolkaVM (pallet-revive). Built on top of Dedot, it ensures robust, and efficient contract integrations for decentralized applications (dapps) in the Polkadot ecosystem.
+Typink is a fully type-safe React hooks library for seamless ink! and Solidity smart contract interactions. Powered by [Dedot](https://dedot.dev), it supports both WASM (pallet-contracts) and PolkaVM (pallet-revive), delivering robust, efficient, and developer-friendly contract integrations for the Polkadot ecosystem.
 
-## Why Typink?
+### Why Typink?
 
-* **Unified type-safe React hooks to interactions with ink! & solidity contracts on Polkadot**
-* **Built-in CLI & boilerplate project setup**: Use `create-typink` CLI to start a project in seconds.
-* **Flexible & seamless wallet authentication**: Supports external wallet connectors like [SubConnect](https://github.com/Koniverse/SubConnect-v2) and [Talisman Connect](https://github.com/TalismanSociety/talisman-connect) or built your own using Typink's hooks & API.
-* **Multi-chain support**: Connect to one or multi chains at once, easily switch networks with lazy initialization.
+* **Unified Type-Safe Hooks** - Same React hooks work seamlessly across ink! v5, ink! v6, and Solidity contracts with full TypeScript support
+* **Instant Project Scaffolding** - Launch new projects in seconds with `create-typink` CLI and pre-configured Next.js templates
+* **Flexible Wallet Connector Integration** - Supports external wallet connectors like [SubConnect](https://github.com/Koniverse/SubConnect-v2) and [Talisman Connect](https://github.com/TalismanSociety/talisman-connect) or built your own using Typink's hooks & API.
+* **Multi-Network Support** - Connect to multiple networks simultaneously with lazy initialization and seamless network switching
 
 ## Getting Started
 

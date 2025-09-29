@@ -5,18 +5,16 @@ coverY: 0
 
 # Welcome to Typink
 
-The ultimate toolkit for [ink!](https://use.ink) dApps development, powered by [Dedot](https://dedot.dev)!
+The ultimate toolkit for dapps development on Polkadot, powered by [Dedot](https://dedot.dev)!
 
-Typink offers fully type-safe React hooks library designed to simplify ink! smart contract interactions. Built on top of Dedot, it ensures robust, and efficient contract integrations for decentralized applications (dApps) in the Polkadot ecosystem.
+Typink offers fully type-safe React hooks library designed to simplify [ink!](https://use.ink) and Solidity smart contract interactions using both WASM (pallet-contracts) and PolkaVM (pallet-revive). Built on top of Dedot, it ensures robust, and efficient contract integrations for decentralized applications (dapps) in the Polkadot ecosystem.
 
 ## Why Typink?
 
-* **Fully type-safe React hooks for contract interactions & event handling**
-* **Seamless wallet authentication**: Supports multiple wallets like [SubConnect](https://github.com/Koniverse/SubConnect-v2) and [Talisman Connect](https://github.com/TalismanSociety/talisman-connect).
+* **Unified type-safe React hooks to interactions with ink! & solidity contracts on Polkadot**
 * **Built-in CLI & boilerplate project setup**: Use `create-typink` CLI to start a project in seconds.
-* **Multi-chain support**: Easily switch networks with lazy initialization.
-
-For more context on why we built Typink, please refer to the [Introducting Typink](https://docs.dedot.dev/typink/introducing-typink) article.
+* **Flexible & seamless wallet authentication**: Supports external wallet connectors like [SubConnect](https://github.com/Koniverse/SubConnect-v2) and [Talisman Connect](https://github.com/TalismanSociety/talisman-connect) or built your own using Typink's hooks & API.
+* **Multi-chain support**: Connect to one or multi chains at once, easily switch networks with lazy initialization.
 
 ## Getting Started
 

@@ -2,7 +2,7 @@
 description: >-
   Typesafe React hooks for seamless ink! smart contract interactions, powered by
   Dedot!
-cover: .gitbook/assets/typink-bg 2.png
+cover: ../.gitbook/assets/typink-bg 2.png
 coverY: 0
 ---
 
@@ -39,13 +39,13 @@ Let's discover the Key Features That Make Typink Stand Out
 
 Typink offers fully type-safe React hooks for both contract messages and event handling. This ensures complete confidence when submitting messages and parameters to contracts, as well as when processing events emitted from them. No more guesswork—just robust, predictable interactions.
 
-<figure><img src=".gitbook/assets/typink-suggestions.gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/typink-suggestions.gif" alt=""><figcaption></figcaption></figure>
 
 ### **Built-in CLI to start new project**
 
 Kickstarting a new project has never been this effortless. With our built-in CLI, `create-typink`, you can launch a new project in under 30 seconds. Simply run the command, and you'll be ready to bring your ideas to life in no time.
 
-<figure><img src=".gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
 ### **Decoupled Wallet Connector Integration**
 
@@ -53,17 +53,17 @@ Say goodbye to rigid wallet connector limitations. Typink supports a range of ex
 
 Just select your desired wallet connector during project setup, and you're ready to go.
 
-<figure><img src=".gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
 ### **Multi-chain supports with lazy initialization**
 
 Developing multi-chain dApps has never been smoother. Typink supports contracts deployed across multiple networks, allowing seamless network switching with just a single click. Your dApp adapts effortlessly to wherever your contracts live, providing a streamlined user experience.
 
-<figure><img src=".gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 Switching networks
 
-<figure><img src=".gitbook/assets/switching-networks (1).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/switching-networks (1).gif" alt=""><figcaption></figcaption></figure>
 
 ## Getting started now!
 

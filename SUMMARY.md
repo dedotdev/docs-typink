@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Welcome to Typink](README.md)
-* [Introducing Typink](introducing-typink.md)
 * [Getting started](getting-started/README.md)
   * [Start a new dapp](getting-started/start-a-new-dapp.md)
   * [Migrate from existing dapp](getting-started/migrate-from-existing-dapp.md)
@@ -35,3 +34,5 @@
 
 * [Telegram](https://t.me/JoinDedot)
 * [Github](https://github.com/dedotdev/typink)
+* [Archive](archive/README.md)
+  * [Introducing Typink](archive/introducing-typink.md)

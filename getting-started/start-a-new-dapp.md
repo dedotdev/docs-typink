@@ -2,11 +2,29 @@
 
 ## **Setup your new project via `create-typink` cli**
 
-Typink comes with a cli to help you start a new project from scratch faster & easier, to create a new project, simply run the below command:
+Typink comes with a cli to help you start a new project from scratch faster & easier, to create a new project, simply run the below command using your prefered package manager:
 
-```sh
-npx create-typink@latest
-```
+{% tabs %}
+{% tab title="pnpm" %}
+pnpm create typink@latest
+{% endtab %}
+
+{% tab title="yarn" %}
+yarn create typink@latest
+{% endtab %}
+
+{% tab title="npm" %}
+npm create typink@latest
+{% endtab %}
+
+{% tab title="bun" %}
+bun create typink@latest
+{% endtab %}
+
+{% tab title="npx" %}
+
+{% endtab %}
+{% endtabs %}
 
 {% hint style="info" %}
 The `create-typink` cli requires NodeJS version >= `v20` to work properly, make sure to check your NodeJS version.

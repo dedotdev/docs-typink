@@ -1,8 +1,12 @@
 # Start a new dapp
 
-## **Setup your new project via `create-typink` cli**
+## Getting Started with Typink
 
-Typink comes with a cli to help you start a new project from scratch faster & easier, to create a new project, simply run the below command using your prefered package manager:
+Typink is a React hooks library for building dApps that interact with ink! and Solidity smart contracts on Substrate-based blockchains. With Typink, you get a **unified developer experience** - the same hooks and APIs work seamlessly across ink! v5 (WASM), ink! v6 (PolkaVM), and Solidity contracts.
+
+### Create a New Project
+
+Start by creating a new Typink project using the interactive CLI:
 
 {% tabs %}
 {% tab title="pnpm" %}
@@ -19,7 +23,7 @@ yarn create typink@latest
 
 {% tab title="bun" %}
 ```sh
-bun create typink@latest
+bunx create typink@latest
 ```
 {% endtab %}
 
@@ -36,298 +40,547 @@ npx create-typink@latest
 {% endtab %}
 {% endtabs %}
 
-{% hint style="info" %}
-The `create-typink` cli requires NodeJS version >= `v20` to work properly, make sure to check your NodeJS version.
-{% endhint %}
+The CLI will guide you through an interactive setup:
 
-Follows the instructions, the cli will help you generate a starter & working project ready for you to start integrate your own contracts and build your own logic:
+#### 1. Enter Project Name
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
-
-After initialize the project, you can now spin up the development server with the following command:
-
-```shell
-cd my-ink-dapp # project folder
-
-yarn start
+```
+? Project name: my-typink-dapp
 ```
 
-{% hint style="info" %}
-Please note that `yarn` is the current default package manager for the start project, make sure to [install `yarn`](https://yarnpkg.com/getting-started/install) on your machine to streamline the development process.
-{% endhint %}
+#### 2. Select Contract Type
 
-## Project structure
+Choose the type of contracts you'll be working with:
 
-The generated project consists of 2 main packages:
-
-* `contracts`: ink! contract artifacts & generated types
-  * `contracts/artifacts`: ink! contract artifacts (.wasm, .json or .contract file), this is where you put your contract artifacts here.
-  * `contracts/types`: Typescript bindings for each ink! contract, these can be generated through [`dedot` cli](https://github.com/dedotdev/typink#2-generate-typescript-bindings-types-for-your-ink-contracts-from-the-metadata)
-* `ui`: Main UI project, a React-based client.
-
-<figure><img src="../.gitbook/assets/image (1).png" alt="" width="375"><figcaption></figcaption></figure>
-
-## Setup & register contract deployments
-
-Before interacting with your contracts, we need a few more steps to setup & register your contract deployments to Typink.
-
-### Put your contracts artifacts to `contracts/artifacts` folder
-
-Contract artifacts consists of a contract metadata file (.json), a contract wasm file (.wasm) and a .contract file (metadata + wasm). After you compiled your contracts, a good practice is to copy the artifacts to `contracts/artifacts`folder of the project. You'll only need the metadata file to interact with your deployed contracts, but we recommend keeping other files (.wasm, .contract) in the same place for tracking purposes.
-
-<figure><img src="../.gitbook/assets/image (2).png" alt="" width="375"><figcaption></figcaption></figure>
-
-### Deploy your contracts to a ink! contract supported network
-
-You have several options to deploy your ink! contracts to, please checkout the list [here](https://use.ink/where-to-deploy) to find the network that you refer to deploy your contracts.
-
-Follow the [instructions](https://use.ink/getting-started/deploy-your-contract) here to deploy your contract via [Contracts UI](https://ui.use.ink/). You can also deploy the contracts via [`cargo contract`cli](https://use.ink/getting-started/deploy-your-contract/#using-cargo-contract), but we recommend using an UI like [Contracts UI](https://ui.use.ink/) as a friendly & intuiative approach.
-
-You will get a Subtrated-based address for the contracts once you successfully deployed them to the networks.
-
-### Generate Typescript bindings for your contracts from metadata files
-
-Now we need to generate Typescript bindings for your contracts from the metadata files, Typink later can leverage these Typescript bindings to enable auto-suggestions/IntelliSense when you interact with your contracts. This is an important step that help you confidently interact with your contracts.
-
-You can generate the Typescript binding using [`dedot`cli](https://docs.dedot.dev/cli#dedot-typink), we will put these types in `contracts/types` folder. Let's generate types for `greeter` & `psp22` contracts
-
-```sh
-npx dedot typink -m ./greeter.json -o ./contracts/types
-
-npx dedot typink -m ./psp22.json -o ./contracts/types
+```
+? Select contract type:
+❯ Ink! v6 (PolkaVM, pallet-revive)
+  Ink! v6 using Sol ABI (PolkaVM, pallet-revive)
+  Solidity (PolkaVM, pallet-revive)
+  Ink! v5 (WASM, pallet-contracts)
 ```
 
-After running the commands, the types will generated into the `contracts/types` folder. You'll get the top-level type interface for `greeter` & `psp22` contracts as: `GreeterContractApi` and `Psp22ContractApi`.
+**Contract Types:**
 
-{% hint style="info" %}
-It's a good practice to put these commands to a shortcut script in th `package.json` file so you can easily regenerate these types again whenver you update the metadata for your contracts
+* **Ink! v6** - Latest ink! version on PolkaVM (pallet-revive)
+* **Ink! v6 Sol ABI** - ink! v6 with Solidity-style ABI
+* **Solidity** - Solidity smart contracts on PolkaVM
+* **Ink! v5** - Legacy ink! on WASM (pallet-contracts)
 
-```json
-{
-   // ...
-   "scripts": {
-      "typink": "npx dedot typink -m ./greeter.json -o ./contracts/types && npx dedot typink -m ./psp22.json -o ./contracts/types"
-   }
-   // ...
-}
+#### 3. Select Networks
+
+Choose one or more networks for your dApp:
+
+```
+? Select supported networks: (Press <space> to select)
+❯◉ Pop Testnet
+ ◯ Passet Hub
 ```
 
+Available networks depend on your contract type:
 
+* **pallet-contracts** (Ink! v5): Pop Testnet, Aleph Zero Testnet, Aleph Zero, Astar
+* **pallet-revive** (Ink! v6/Solidity): Pop Testnet, Passet Hub
 
-To regenerate the types again, simply run:
+### Start Development
 
-```sh
-npm run typink
+Navigate to your project and start the development server:
 
-# or
-yarn typink
+```bash
+cd my-typink-dapp
 
-# or
-pnpm typink
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun dev
 ```
-{% endhint %}
 
-### Register your contract deployments
+Open [http://localhost:3000](http://localhost:3000) to see your dApp running!
 
-Typink needs to know your contract deployments information (address, metadata, ...) to help you do the magic under the hood. The `ContractDeployment` interface have the following structure:
+### Project Structure
+
+Your project follows Next.js 15 App Router structure:
+
+```
+my-typink-dapp/
+├── src/
+│   ├── app/                    # Next.js app directory
+│   │   ├── layout.tsx         # Root layout
+│   │   ├── page.tsx           # Home page
+│   │   └── globals.css        # Global styles
+│   ├── components/            # React components
+│   │   ├── shared/           # Shared UI components
+│   │   └── [contract]-board.tsx  # Contract interaction components
+│   ├── contracts/            # Contract-related files
+│   │   ├── deployments.ts    # Contract deployment addresses
+│   │   └── types/           # Generated TypeScript bindings
+│   ├── lib/                  # Utility functions
+│   │   └── utils.ts
+│   └── providers/            # React providers
+│       └── app-provider.tsx  # TypinkProvider configuration
+├── public/                   # Static assets
+├── package.json
+├── tsconfig.json
+└── next.config.ts
+```
+
+#### Key Files
+
+**`src/providers/app-provider.tsx`** - Configures TypinkProvider with networks, wallets, and contracts:
 
 ```tsx
-interface ContractDeployment {
-  id: string; // A unique easy-to-remember contract id, recommened put them in an enum
-  metadata: ContractMetadata | string; // Metadata for the contract
-  address: SubstrateAddress; // Address of the contract
-  network: string; // The network id that the contract is deployed to, e.g: Pop Testnet (pop_testnet), Aleph Zero Testnet (alephzero_testnet) ...
+import { TypinkProvider, setupTxToaster, SonnerAdapter } from 'typink';
+import { deployments } from '@/contracts/deployments';
+
+setupTxToaster({
+  adapter: new SonnerAdapter(toast),
+});
+
+export function AppProvider({ children }) {
+  return (
+    <TypinkProvider
+      appName="My Typink dApp"
+      deployments={deployments}
+      supportedNetworks={[popTestnet]}
+      defaultNetworkId={popTestnet.id}
+      wallets={[subwallet, talisman, polkadotjs]}>
+      {children}
+    </TypinkProvider>
+  );
 }
 ```
 
-We'll put your contract deployments information in file:  `contract/deployments.ts` so you can easily manage them. Each of your contract will be given an unique id (`string`), so it will be easier later when you want refer to which contract you want to interact with.
+**`src/contracts/deployments.ts`** - Registers contract deployments:
 
-{% code title="contracts/deployments.ts" %}
-```typescript
-import { ContractDeployment, popTestnet } from 'typink';
-import greeterMetadata from './artifacts/greeter/greeter.json';
-import psp22Metadata from './artifacts/psp22/psp22.json';
-
+```tsx
 export enum ContractId {
-  GREETER = 'greeter',
-  PSP22 = 'psp22',
+  FLIPPER = 'flipper',
 }
 
 export const deployments: ContractDeployment[] = [
   {
-    id: ContractId.GREETER,
-    metadata: greeterMetadata as any,
-    address: '5HJ2XLhBuoLkoJT5G2MfMWVpsybUtcqRGWe29Fo26JVvDCZG',
-    network: popTestnet.id
-  },
-  {
-    id: ContractId.PSP22,
-    metadata: psp22Metadata as any,
-    address: '16119BccKAfWwbt4TCNvfLBDuRWHSeFozJELEcxFPVd11hnt',
+    id: ContractId.FLIPPER,
+    metadata: flipperMetadata,
+    address: '0x3ddc397c0350cbfb89d4f28d476073d6051067c4',
     network: popTestnet.id,
   },
 ];
 ```
-{% endcode %}
 
-## Interact with your contracts
+### Explore the Example
 
-Now after registering your contract deployments, you're now ready to interact with the contracts.
+Your project includes a pre-deployed example contract with working interactions:
 
-### Initialize `Contract` instance using `useContract` hook
+1. **Connect Wallet** - Click "Connect Wallet" and select SubWallet, Talisman, or PolkadotJS
+2. **View State** - See the current contract state (e.g., Flipper value, Storage value)
+3. **Send Transactions** - Interact with the contract (e.g., flip the boolean, set storage)
+4. **Watch Progress** - Transaction toasts show real-time progress
 
-To interact with a contract, we first need to initialize a `Contract`instance using the unique `ContractId`we registered in the `contracts/deployments.ts`file.
+#### Example Contracts
+
+* **Ink! v5**: Greeter contract (set and get messages)
+* **Ink! v6**: Flipper contract (flip boolean value)
+* **Ink! v6 Sol ABI**: Flipper contract with Solidity-style ABI
+* **Solidity**: Storage contract (set and get uint256 value)
+
+### Add Your Own Contracts
+
+#### 1. Deploy Your Contract
+
+Deploy your contract to a supported network using:
+
+* [POP CLI](https://learn.onpop.io/contracts/guides/deploy) - Command-line tool for deploying to Pop Network
+* [Contracts UI](https://ui.use.ink/) - User-friendly web interface
+* [cargo-contract](https://github.com/paritytech/cargo-contract) - CLI tool
+* [Remix IDE](https://remix.polkadot.io/) - For Solidity contracts on PolkaVM
+
+You'll receive a contract address after successful deployment.
+
+#### 2. Generate TypeScript Bindings
+
+The project includes a pre-configured typegen script (`./scripts/typegen.ts`) that generates type-safe bindings for all contracts in `src/contracts/artifacts/`.
+
+First, place your contract metadata/ABI files in `src/contracts/artifacts/`, then run:
+
+```bash
+# npm
+npm run typegen
+
+# pnpm
+pnpm typegen
+
+# yarn
+yarn typegen
+
+# bun
+bun typegen
+```
+
+This script automatically processes all metadata/ABI files in `src/contracts/artifacts/` and generates TypeScript bindings to `src/contracts/types/`. The generated TypeScript API (e.g., `MyContractApi`) will be available in `src/contracts/types/my_contract/`.
+
+#### 3. Register Contract Deployment
+
+Add your contract to `src/contracts/deployments.ts`:
+
+```tsx
+import myContractMetadata from './types/my_contract/metadata.json';
+
+export enum ContractId {
+  FLIPPER = 'flipper',
+  MY_CONTRACT = 'my-contract', // Add your contract
+}
+
+export const deployments: ContractDeployment[] = [
+  // ... existing deployments
+  {
+    id: ContractId.MY_CONTRACT,
+    metadata: myContractMetadata,
+    address: 'YOUR_CONTRACT_ADDRESS',
+    network: popTestnet.id,
+  },
+];
+```
+
+### Unified Hooks - Works with All Contract Types
+
+Typink's hooks provide a **unified API** that works identically across ink! v5, ink! v6, and Solidity contracts.
+
+#### useContract - Initialize Contract Instance
+
+Get a typed contract instance:
 
 ```tsx
 import { useContract } from 'typink';
-import { Contract } from 'dedot/contracts';
-import { ContractId } from 'contracts/deployments.ts';
-import { GreeterContractApi } from 'contracts/types/greeter';
+import { MyContractApi } from '@/contracts/types/my_contract';
 
-const { contract } = useContract<GreeterContractApi>(ContractId.GREETER);
+function MyComponent() {
+  const { contract } = useContract<MyContractApi>(ContractId.MY_CONTRACT);
 
-// ...
+  // contract is now fully typed based on your contract ABI
+}
 ```
 
-### Send a contract query using `useContractQuery` hook
+#### useContractQuery - Query Contract State
 
-We now can send a query message to the contract using the `useContractQuery`hook.
+Read contract state with automatic type inference:
 
-<pre class="language-tsx"><code class="lang-tsx">// ...
-<strong>import { useContract, useContractQuery } from 'typink';
-</strong>import { ContractId } from 'contracts/deployments.ts';
-import { GreeterContractApi } from 'contracts/types/greeter';
-
-const { contract } = useContract&#x3C;GreeterContractApi>(ContractId.GREETER);
-
-const {
-  data: greet, // the greeting message (data)
-  isLoading, // a boolean to check if the message is loading
-  refresh, // refresh method to reload the message
-} = useContractQuery({
-  contract,
-  fn: 'greet',
-});
-
-// ...
-</code></pre>
-
-### Make a contract transaction using `useContractTx` hook
-
-Send a message to update the greeting message using `useContractTx` hook. We can also use the [`txToaster`](https://docs.dedot.dev/typink/utilities/txtoaster)utility method to showing a notification about the transaction process.
+**Ink! v6 Flipper Example:**
 
 ```tsx
-// ...
+import { useContract, useContractQuery } from 'typink';
+import { FlipperContractApi } from '@/contracts/types/flipper';
 
-import { useContract, useContractTx } from 'typink';
-import { ContractId } from 'contracts/deployments.ts';
-import { GreeterContractApi } from '@/contracts/types/greeter';
-import { txToaster } from '@/utils/txToaster.tsx';
+function FlipperQuery() {
+  const { contract } = useContract<FlipperContractApi>(ContractId.FLIPPER);
 
-const [message, setMessage] = useState('');
-const { contract } = useContract<GreeterContractApi>(ContractId.GREETER);
-const setMessageTx = useContractTx(contract, 'setMessage');
+  const { data: value, isLoading, refresh } = useContractQuery({
+    contract,
+    fn: 'get', // ✅ Fully typed - autocomplete works!
+  });
 
-const doSetMessage = async () => {
-  if (!contract || !message) return;
+  if (isLoading) return <div>Loading...</div>;
 
-  const toaster = txToaster();
-  
-  try {
-    await setMessageTx.signAndSend({
-      args: [message],
-      callback: (progress) => {
-        const { status } = progress;
-        console.log(status);
-
-        if (status.type === 'BestChainBlockIncluded') {
-          setMessage(''); // Reset the message if the transaction is in block
-        }
-
-        // showing a toast notifying transaction status
-        toaster.onTxProgress(progress);
-      },
-    });
-  } catch (e: any) {
-    console.error('Fail to make transaction:', e);
-    // showing a toast message
-    toaster.onTxError(e);
-  }
+  return (
+    <div>
+      <p>Current value: {value?.toString()}</p>
+      <button onClick={refresh}>Refresh</button>
+    </div>
+  );
 }
-
-// ...
 ```
 
-### Listen to contract events using `useWatchContractEvent` hook
+**Solidity Storage Example:**
 
-Leveraging powerful Dedot's type system, you can also listen to contract events easily & confidently.
+```tsx
+import { useContract, useContractQuery } from 'typink';
+import { StorageContractApi } from '@/contracts/types/storage';
 
-Let's listen to the `Greeted`event from the `greeter`contract emitted once you set the message.
+function StorageQuery() {
+  const { contract } = useContract<StorageContractApi>(ContractId.STORAGE);
+
+  const { data: value, isLoading } = useContractQuery({
+    contract,
+    fn: 'retrieve', // ✅ Same API, different contract!
+  });
+
+  return <div>Stored value: {value?.toString()}</div>;
+}
+```
+
+**💡 The hooks are identical!** Only the contract type and method names change.
+
+#### useContractTx - Send Transactions
+
+Execute contract transactions with the same API:
+
+**Ink! v6 Flipper Example:**
+
+```tsx
+import { useContract, useContractTx, txToaster } from 'typink';
+
+function FlipperTx() {
+  const { contract } = useContract<FlipperContractApi>(ContractId.FLIPPER);
+  const flipTx = useContractTx(contract, 'flip');
+
+  const handleFlip = async () => {
+    const toaster = txToaster('Flipping value...');
+
+    try {
+      await flipTx.signAndSend({
+        callback: (result) => {
+          toaster.onTxProgress(result);
+        },
+      });
+    } catch (error) {
+      toaster.onTxError(error);
+    }
+  };
+
+  return (
+    <button
+      onClick={handleFlip}
+      disabled={flipTx.inBestBlockProgress}>
+      {flipTx.inBestBlockProgress ? 'Flipping...' : 'Flip'}
+    </button>
+  );
+}
+```
+
+**Solidity Storage Example:**
+
+```tsx
+import { useContract, useContractTx, txToaster } from 'typink';
+
+function StorageTx() {
+  const { contract } = useContract<StorageContractApi>(ContractId.STORAGE);
+  const storeTx = useContractTx(contract, 'store');
+  const [value, setValue] = useState('');
+
+  const handleStore = async () => {
+    const toaster = txToaster('Storing value...');
+
+    try {
+      await storeTx.signAndSend({
+        args: [BigInt(value)], // ✅ Type-safe args!
+        callback: (result) => {
+          toaster.onTxProgress(result);
+        },
+      });
+    } catch (error) {
+      toaster.onTxError(error);
+    }
+  };
+
+  return (
+    <>
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        type="number"
+      />
+      <button onClick={handleStore}>Store</button>
+    </>
+  );
+}
+```
+
+**💡 Identical hook usage!** The only difference is the contract type and arguments.
+
+#### useWatchContractEvent - Listen to Events
+
+Watch for contract events with type-safe event data:
+
+**Ink! v6 Example:**
 
 ```tsx
 import { useContract, useWatchContractEvent } from 'typink';
-import { ContractId } from 'contracts/deployments.ts';
-import { GreeterContractApi } from 'contracts/types/greeter';
 
-const { contract } = useContract<GreeterContractApi>(ContractId.GREETER);
+function FlipperEvents() {
+  const { contract } = useContract<FlipperContractApi>(ContractId.FLIPPER);
+  const [events, setEvents] = useState([]);
 
-useWatchContractEvent(
-  contract,
-  'Greeted',
-  useCallback((events) => {
-    events.forEach((greetedEvent) => {
-      const {
-        name,
-        data: { from, message },
-      } = greetedEvent;
+  useWatchContractEvent(
+    contract,
+    'Flipped', // ✅ Event name is typed!
+    useCallback((newEvents) => {
+      newEvents.forEach((event) => {
+        const { name, data } = event;
+        console.log(`${name} event:`, data); // ✅ data is typed!
+        setEvents((prev) => [...prev, event]);
+      });
+    }, [])
+  );
 
-      console.log(`Found a ${name} event sent from: ${from?.address()}, message: ${message}  `);
-    });
-  }, []),
-)
+  return (
+    <div>
+      <h3>Recent Events:</h3>
+      {events.map((event, i) => (
+        <div key={i}>{event.name}</div>
+      ))}
+    </div>
+  );
+}
 ```
 
-### Deploy a contract using `useDeployerTx` hook
+**💡 Works the same for Solidity contracts!** Just use your Solidity contract's event names.
 
-Instantiate a `ContractDeployer` instance to deploy Greeter contract using `useDeployer` hook and deploying the contract using `useDeployerTx` hook.
+#### useDeployerTx - Deploy New Contracts
+
+Deploy new contract instances:
 
 ```tsx
-// ...
-import { useContract, useDeployer, useDeployerTx } from 'typink';
-import { ContractId } from 'contracts/deployments.ts';
-import { greeterMetadata } from '@/contracts/deployments.ts';
+import { useDeployer, useDeployerTx, txToaster } from 'typink';
+import { generateRandomHex } from 'dedot/utils';
+import metadata from '@/contracts/types/flipper/metadata.json';
 
-const wasm = greeterMetadata.source.wasm; // or greeterMetadata.source.hash (wasm hash code)
-const { deployer } = useDeployer<GreeterContractApi>(greeterMetadata as any, wasm);
-const newGreeterTx = useDeployerTx(deployer, 'new');
+function DeployFlipper() {
+  const wasm = metadata.source.wasm; // or metadata.source.hash
+  const { deployer } = useDeployer<FlipperContractApi>(metadata, wasm);
+  const newFlipperTx = useDeployerTx(deployer, 'new');
 
-const deployContraact = async () => {
-  if (!contract) return;
+  const handleDeploy = async () => {
+    const toaster = txToaster('Deploying contract...');
 
-  try {
-    // a random salt to make sure we don't get into duplicated contract deployments issue
-    const salt = numberToHex(Date.now()); 
-    const initMessage = 'Hello Typink!';
-    
-    await newGreeterTx.signAndSend({
-      args: [initMessage],
-      txOptions: { salt },
-      callback: ({ status }, deployedContractAddress) => {
-        console.log(status);
+    try {
+      await newFlipperTx.signAndSend({
+        args: [false], // Initial value
+        txOptions: { salt: generateRandomHex() },
+        callback: (result, deployedAddress) => {
+          toaster.onTxProgress(result);
 
-        if (deployedContractAddress) {
-          console.log('Contract is deployed at address', deployedContractAddress);
-        }
+          if (deployedAddress) {
+            console.log('Deployed at:', deployedAddress);
+          }
+        },
+      });
+    } catch (error) {
+      toaster.onTxError(error);
+    }
+  };
 
-        // TODO showing a toast notifying transaction status
-      },
-    });
-  } catch (e: any) {
-    console.error('Fail to make transaction:', e);
-    // TODO showing a toast message
-  }
+  return <button onClick={handleDeploy}>Deploy New Flipper</button>;
 }
-
-// ...
 ```
 
+### Setup Transaction Toaster
+
+Before using `txToaster()`, configure the global adapter in your app provider:
+
+```tsx
+import { setupTxToaster, SonnerAdapter } from 'typink';
+import { toast } from 'sonner';
+
+// Setup once at app initialization
+setupTxToaster({
+  adapter: new SonnerAdapter(toast),
+  initialMessage: 'Signing transaction...',
+  autoCloseDelay: 5000,
+});
+```
+
+**Supported toast libraries:**
+
+* **Sonner** (recommended) - `SonnerAdapter`
+* **React-Toastify** - `ReactToastifyAdapter`
+* **React-Hot-Toast** - `ReactHotToastAdapter`
+
+See the txToaster documentation for more details.
+
+### Complete Example
+
+Here's a complete component showing query, transaction, and events:
+
+```tsx
+'use client';
+
+import { useCallback, useState } from 'react';
+import { useContract, useContractQuery, useContractTx, useWatchContractEvent, txToaster } from 'typink';
+import { FlipperContractApi } from '@/contracts/types/flipper';
+
+export function FlipperBoard() {
+  const { contract } = useContract<FlipperContractApi>(ContractId.FLIPPER);
+  const [events, setEvents] = useState<string[]>([]);
+
+  // Query current value
+  const { data: value, isLoading, refresh } = useContractQuery({
+    contract,
+    fn: 'get',
+  });
+
+  // Transaction to flip value
+  const flipTx = useContractTx(contract, 'flip');
+
+  // Watch for Flipped events
+  useWatchContractEvent(
+    contract,
+    'Flipped',
+    useCallback((newEvents) => {
+      newEvents.forEach((event) => {
+        setEvents((prev) => [...prev, `Flipped to: ${event.data.newValue}`]);
+      });
+    }, [])
+  );
+
+  const handleFlip = async () => {
+    const toaster = txToaster('Flipping value...');
+
+    try {
+      await flipTx.signAndSend({
+        callback: (result) => {
+          toaster.onTxProgress(result);
+
+          if (result.status.type === 'BestChainBlockIncluded' && !result.dispatchError) {
+            refresh(); // Refresh query after success
+          }
+        },
+      });
+    } catch (error) {
+      toaster.onTxError(error);
+    }
+  };
+
+  return (
+    <div>
+      <h2>Flipper Contract</h2>
+
+      {/* Display current value */}
+      <div>
+        <p>Current Value:</p>
+        {isLoading ? (
+          <span>Loading...</span>
+        ) : (
+          <span>{value?.toString()}</span>
+        )}
+      </div>
+
+      {/* Flip button */}
+      <button
+        onClick={handleFlip}
+        disabled={flipTx.inBestBlockProgress}>
+        {flipTx.inBestBlockProgress ? 'Flipping...' : 'Flip Value'}
+      </button>
+
+      {/* Recent events */}
+      <div>
+        <h3>Recent Events:</h3>
+        {events.map((event, i) => (
+          <div key={i}>{event}</div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+**💡 This exact same pattern works for Solidity contracts!** Just change the contract type and method names.
+
+***
+
+**Happy building with Typink! 🎉**

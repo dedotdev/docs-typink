@@ -230,7 +230,7 @@ This script automatically processes all metadata/ABI files in `src/contracts/art
 Add your contract to `src/contracts/deployments.ts`:
 
 ```tsx
-import myContractMetadata from './types/my_contract/metadata.json';
+import myContractMetadata from './artifacts/my_contract/metadata.json';
 
 export enum ContractId {
   FLIPPER = 'flipper',

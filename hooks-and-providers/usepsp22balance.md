@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # usePSP22Balance
 
 The `usePSP22Balance` hook retrieves an account’s balance on a PSP22 contract. The hook also comes with a watch mode to continuously monitor balance changes, updating the value in real time.

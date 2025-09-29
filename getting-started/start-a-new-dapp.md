@@ -6,23 +6,33 @@ Typink comes with a cli to help you start a new project from scratch faster & ea
 
 {% tabs %}
 {% tab title="pnpm" %}
+```sh
 pnpm create typink@latest
+```
 {% endtab %}
 
 {% tab title="yarn" %}
+```sh
 yarn create typink@latest
-{% endtab %}
-
-{% tab title="npm" %}
-npm create typink@latest
+```
 {% endtab %}
 
 {% tab title="bun" %}
+```sh
 bun create typink@latest
+```
+{% endtab %}
+
+{% tab title="npm" %}
+```sh
+npm create typink@latest
+```
 {% endtab %}
 
 {% tab title="npx" %}
-
+```sh
+npx create-typink@latest
+```
 {% endtab %}
 {% endtabs %}
 

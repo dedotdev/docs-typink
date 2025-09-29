@@ -2,7 +2,7 @@
 
 ## Getting Started with Typink
 
-Typink is a React hooks library for building dApps that interact with ink! and Solidity smart contracts on Substrate-based blockchains. With Typink, you get a **unified developer experience** - the same hooks and APIs work seamlessly across ink! v5 (WASM), ink! v6 (PolkaVM), and Solidity contracts.
+Typink is a React hooks library for building dApps that interact with ink! and Solidity smart contracts on Polkadot blockchains. With Typink, you get a **unified developer experience** - the same hooks and APIs work seamlessly across ink! v5 (WASM), ink! v6 (PolkaVM), and Solidity contracts.
 
 ### Create a New Project
 

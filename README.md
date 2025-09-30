@@ -1,17 +1,15 @@
 ---
-cover: .gitbook/assets/Typink banner (1991-491).png
+cover: .gitbook/assets/typink-new-banner.png
 coverY: 0
 ---
 
 # Welcome to Typink
 
-**Build production-ready dapps on Polkadot with confidence.**
-
-Typink is a fully type-safe React hooks library for seamless ink! and Solidity smart contract interactions. Powered by [Dedot](https://dedot.dev), it supports both WASM (pallet-contracts) and PolkaVM (pallet-revive), delivering robust, efficient, and developer-friendly contract integrations for the Polkadot ecosystem.
+Typink is a fully type-safe React hooks library for seamless ink! and Solidity smart contract interactions. Powered by [Dedot](https://dedot.dev), it supports both WASM (pallet-contracts) and PolkaVM (pallet-revive) on Polkadot, delivering robust, efficient, and developer-friendly contract integrations.
 
 ### Why Typink?
 
-* **Unified Type-Safe Hooks** - Same React hooks work seamlessly across ink! v5, ink! v6, and Solidity contracts with full TypeScript support
+* **Unified Type-Safe Hooks** - Same React hooks work seamlessly across ink! v5, ink! v6, and Solidity contracts.
 * **Instant Project Scaffolding** - Launch new projects in seconds with `create-typink` CLI and pre-configured Next.js templates
 * **Flexible Wallet Connector Integration** - Supports external wallet connectors like [SubConnect](https://github.com/Koniverse/SubConnect-v2) and [Talisman Connect](https://github.com/TalismanSociety/talisman-connect) or built your own using Typink's hooks & API.
 * **Multi-Network Support** - Connect to multiple networks simultaneously with lazy initialization and seamless network switching

@@ -1,5 +1,5 @@
 ---
-cover: .gitbook/assets/Typink banner (1991_496).png
+cover: .gitbook/assets/new_typink_banner_big.png
 coverY: 0
 ---
 

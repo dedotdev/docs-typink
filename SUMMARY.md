@@ -35,7 +35,7 @@
 ## HELP & FAQ
 
 * [Tutorials](help-and-faq/tutorials/README.md)
-  * [Develop ink! dApp using Typink](https://docs.dedot.dev/help-and-faq/tutorials/develop-ink-dapp-using-typink)
+  * [Build an ERC20 dapp with Typink and ink! v6](help-and-faq/tutorials/build-an-erc20-dapp-with-typink-and-ink-v6.md)
 
 ***
 
